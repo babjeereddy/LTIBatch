@@ -1,0 +1,6 @@
+db.employees.find({$or:[{"address.city":"New York"},{department:"IT"}]},
+                   {name: 1, department:1, "address.city":1,
+		   "address.zip":1, _id:0})
+
+
+https://codeshare.io/5ewzwl
