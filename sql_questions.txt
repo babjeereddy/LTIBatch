@@ -1,0 +1,115 @@
+-- Restaurant table
+CREATE TABLE restaurant (
+    restaurant_id INT PRIMARY KEY,
+    restaurant_name VARCHAR(100) NOT NULL,
+    city VARCHAR(50) NOT NULL
+);
+
+-- Delivery Agent table
+CREATE TABLE deliveryagent (
+    agent_id INT PRIMARY KEY,
+    agent_name VARCHAR(100) NOT NULL,
+    city VARCHAR(50) NOT NULL
+);
+
+-- Orders table
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    order_date DATE NOT NULL,
+    customer_name VARCHAR(100) NOT NULL,
+    agent_id INT,
+    restaurant_id INT,
+    amount DECIMAL(10,2),
+    FOREIGN KEY (agent_id) REFERENCES deliveryagent(agent_id),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurant(restaurant_id)
+);
+
+-- Insert Restaurants
+INSERT INTO restaurant (restaurant_id, restaurant_name, city) VALUES
+(201, 'Dominos', 'Delhi'),
+(202, 'KFC', 'Mumbai'),
+(203, 'PizzaHut', 'Delhi'),
+(204, 'Subway', 'Bangalore'),
+(205, 'BurgerKing', 'Mumbai');
+
+-- Insert Delivery Agents
+INSERT INTO deliveryagent (agent_id, agent_name, city) VALUES
+(101, 'Rajesh', 'Delhi'),
+(102, 'Priya', 'Mumbai'),
+(103, 'Arjun', 'Delhi'),
+(104, 'Sneha', 'Bangalore');
+
+-- Insert Orders
+INSERT INTO orders (order_id, order_date, customer_name, agent_id, restaurant_id, amount) VALUES
+(1, '2025-09-20', 'John', 101, 201, 500.00),
+(2, '2025-09-20', 'Alice', 102, 202, 700.00),
+(3, '2025-09-21', 'Bob', 101, 201, 300.00),
+(4, '2025-09-21', 'David', 103, 203, 900.00),
+(5, '2025-09-22', 'Emma', 102, 202, 450.00),
+(6, '2025-09-22', 'Ravi', 104, 204, 600.00),
+(7, '2025-09-23', 'Meera', 103, 203, 750.00),
+(8, '2025-09-23', 'Sam', 101, 205, 400.00),
+(9, '2025-09-24', 'Sophia', 104, 204, 800.00),
+(10,'2025-09-24', 'Liam', 102, 205, 650.00);
+
+
+Q1 List all orders with customer name and order amount.
+
+Q2. Show names of all delivery agents in Mumbai.
+
+Q3. Find total number of restaurants in Delhi.
+
+Q4. Show all unique restaurant cities (no duplicates).
+
+Q5. Find the total sales amount handled by each delivery agent.
+
+Q6. Show orders where amount is greater than the average order amount.
+
+Q7. Find the restaurant with the maximum number of orders.
+
+Q8. Find delivery agents who delivered orders from more than one restaurant.
+
+Q9. For each city, find the total sales done by agents in that city.
+
+Q10. Find the top restaurant per agent (highest sales).
+
+Q11. Rank delivery agents by total sales.
+
+Q12. Find the top 3 restaurants by total sales.
+
+Q13. Find agents who delivered orders from restaurants located in their own city.
+
+Q14. Find agents who have never delivered from 'KFC'.
+
+Q15. Show the highest order amount per city (restaurant city).
+
+Q16. Find the restaurant with the highest sales handled by each agent.
+
+Q17. Find agents whose total sales are above the overall average sales of all agents.
+
+Q18. Find the customer(s) who placed the highest single order
+
+Q19. Show daily agent ranking by number of deliveries.
+
+Q20. Find the restaurant(s) that have never received an order.
+
+Q21. Find agents who delivered orders on at least 3 different days.
+
+Q22. Find the city that generated the maximum sales overall.
+
+Q23. Show the second highest order amount (without using LIMIT).
+
+Q24. Find all orders where the agent delivered in a different city from their own city.
+
+Q25. Find the top customer (by total amount spent).
+
+
+Q26. Find restaurants that earned more than the average earnings of all restaurants.
+
+Q27. Show the running total of sales by order_date.
+
+Q28. Find the restaurant with the highest single-day sales.
+
+Q29. Find agents who delivered all orders for a given restaurant ('Dominos').
+
+Q30. Find agents who delivered orders for at least one restaurant in every city.
